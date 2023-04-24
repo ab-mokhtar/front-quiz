@@ -1,0 +1,31 @@
+<!-- Utiliser la classe "container" pour encadrer le contenu -->
+<div class="container">
+    <h1>Liste des Evaluations</h1>
+    <!-- Utiliser la classe "row" pour créer une rangée -->
+    <div class="row">
+      <!-- Utiliser la classe "col-md-4" pour créer une colonne de taille moyenne (3 colonnes sur 12) -->
+      <!-- Utiliser la classe "card" pour créer une carte -->
+      <div class="col-md-4" *ngFor="let evaluation of Evaluations">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Evaluateur :{{ evaluation.evaluateur.nom }} {{ evaluation.evaluateur.prenom }}</h5>
+            <h5 class="card-title">Candidat :{{ evaluation.candidat.nom }} {{ evaluation.candidat.prenom }}</h5>
+            <p class="card-text">score quiz :{{ evaluation.score_quiz }}</p>
+            <p class="card-text">score entretien :{{ evaluation.score_entretien }}</p>
+            <p class="card-text">score total :{{ evaluation.score_total }}</p>
+            <!-- Utiliser un bouton de suppression avec la classe "btn" et "btn-danger" pour le style de danger -->
+            <!-- Appeler la fonction "supprimerAffectation" en passant l'identifiant de l'affectation comme argument -->
+            <button class="btn btn-danger" (click)="supprimerAffectation(evaluation.id)">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Utiliser la classe "row" pour créer une rangée pour le tableau -->
+    <div class="row mt-5">
+      <!-- Utiliser la classe "col-md-12" pour créer une colonne de taille moyenne (12 colonnes sur 12) -->
+      <div class="col-md-12">
+        <!-- Utiliser la classe "table" pour créer un tableau -->
+        <table class="table">
+          <thead>
+           
+  

@@ -1,0 +1,9 @@
+.parent-component {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 50px; /* Ajoutez la valeur de padding souhaitée */
+    margin-bottom: 100px;
+  }
+  

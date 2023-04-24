@@ -1,0 +1,30 @@
+<div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title text-center">Évaluateurs disponibles :</h2>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <div class="form-group mt-2">
+                <label for="candidatSelect">Sélectionner un Évaluateurs :</label>
+                <select id="eval" [(ngModel)]="EvaluateurSelection" name="Eval" class="form-control">
+                  <option *ngFor="let evaluateur of evaluateurs"  [value]="evaluateur.id">{{ evaluateur.nom }} {{ evaluateur.prenom }}</option>
+                </select>
+              </div>
+              <div class="form-group mt-2">
+                <label for="candidatSelect">Sélectionner un candidat :</label>
+                <select id="candidats" [(ngModel)]="candidatSelection" name="candidats" class="form-control">
+                  <option *ngFor="let candidat of candidats"  [value]="candidat.id">{{ candidat.nom }} {{ candidat.prenom }}</option>
+                </select>
+                
+            <label for="choiceText">Score :</label>
+            <input type="texr" id="choiceText" [(ngModel)]="score" name="score">
+            
+              </div>
+              <button class="btn btn-primary" (click)="Evaluer(EvaluateurSelection, candidatSelection,score)">Affecter</button>
+            </li>
+          </ul>
+        </div>    
+      </div>
+    </div>
+  </div>

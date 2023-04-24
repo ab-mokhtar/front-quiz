@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title text-center">Formulaire de recherche d'évaluateurs</h2>
+            <form (ngSubmit)="submitForm()" class="form-inline">
+              <div class="form-group">
+                <label for="dateInput">Date :</label>
+                <input type="date" id="dateInput" [(ngModel)]="dateSelection" name="dateInput" class="form-control mx-2">
+              </div>
+              <button type="submit" class="btn btn-primary">Afficher les évaluateurs disponibles</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Affichage des évaluateurs disponibles -->
+    <div class="row justify-content-center mt-4" *ngIf="evaluateursDispo && evaluateursDispo.length > 0">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title text-center">Évaluateurs disponibles :</h2>
+            <ul class="list-group">
+              <li *ngFor="let evaluateur of evaluateursDispo" class="list-group-item">
+                {{ evaluateur.nom }} {{ evaluateur.prenom }}
+                <div class="form-group mt-2">
+                  <label for="candidatSelect">Sélectionner un candidat :</label>
+                  <select id={{evaluateur.id}} [(ngModel)]="candidatSelection" name={{evaluateur.id}} class="form-control">
+                    <option *ngFor="let candidat of candidats"  [value]="candidat.id">{{ candidat.nom }} {{ candidat.prenom }}</option>
+                  </select>
+                </div>
+                <button class="btn btn-primary" (click)="affecterEvaluateur(evaluateur, candidatSelection)">Affecter</button>
+              </li>
+            </ul>
+          </div>    
+        </div>
+      </div>
+    </div>
+  
+    <!-- Affichage des évaluateurs non disponibles -->
+    <div class="row justify-content-center mt-4" *ngIf="evaluateursNonDispo && evaluateursNonDispo.length > 0">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title text-center">Évaluateurs non disponibles :</h2>
+            <ul class="list-group">
+              <li *ngFor="let evaluateur of evaluateursNonDispo" class="list-group-item">{{ evaluateur.nom }} {{ evaluateur.prenom }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,24 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class EvaluationService {
+
+  private quizApiUrl = 'http://localhost:9080'; // Externalisation de l'URL de l'API
+
+  constructor(private http: HttpClient) { }
+  AddEvaluation(evaluation: object): Observable<object> {
+    return this.http.post<object>(this.quizApiUrl+'/Evaluations', evaluation);
+  }
+  supprimerEvaluation(id: number):Observable<object> {
+    return this.http.delete<object>(this.quizApiUrl+'/Evaluations/'+id);
+  }
+
+ 
+  getAllEvaluation(): Observable<object[]> { 
+    return this.http.get<object[]>(this.quizApiUrl+'/Evaluations');
+  }
+}

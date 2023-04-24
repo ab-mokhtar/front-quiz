@@ -1,0 +1,19 @@
+<!-- Boucle pour afficher les quiz -->
+<ul>
+  <!-- Affichage des propriétés du quiz -->
+  <!-- Affichage des choix de réponse pour chaque question -->
+  <li *ngFor="let question of quiz.questions">
+    <h4>{{ question.text }}</h4>
+    <ul>
+      <li *ngFor="let choice of question.choices">
+        <label>
+          <input type="radio" name="{{ question.id }}" [(ngModel)]="selectedChoices[question.id]" [value]="choice.id">
+          {{ choice.value }}
+        </label>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<!-- Bouton de soumission du quiz -->
+<button (click)="submitQuiz()" class="btn btn-primary">Soumettre</button>

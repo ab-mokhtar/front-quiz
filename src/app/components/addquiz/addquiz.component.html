@@ -1,0 +1,31 @@
+<form [formGroup]="quizForm" (ngSubmit)="onSubmit()" class="quiz-form">
+  <div class="form-group">
+    <label for="title">Titre</label>
+    <input type="text" id="title" class="form-control" formControlName="title">
+    <div *ngIf="quizForm.controls['title'].invalid && quizForm.controls['title'].touched" class="error-msg">
+      Titre requis
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea id="description" class="form-control" formControlName="description"></textarea>
+    <div *ngIf="quizForm.controls['description'].invalid && quizForm.controls['description'].touched" class="error-msg">
+      Description requise
+    </div>
+  </div>
+
+  <div formArrayName="questions">
+    <div *ngFor="let question of questions.controls; let i = index" [formGroupName]="i" class="card">
+      <div class="card-header">
+        <h3 class="card-title">Question {{ i + 1 }}</h3>
+      </div>
+      <div class="card-body">
+        <input formControlName="questionText" placeholder="Question text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <button type="button" (click)="addQuestion()" class="btn btn-primary">Add Question</button>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
